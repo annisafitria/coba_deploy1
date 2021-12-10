@@ -9,9 +9,9 @@ from feature_extractor import FeatureExtractor
 
 app = Flask(__name__)
 
-base_dir = './static/image_db'
-feature_dir = './static/feature'
-model_dir = './static/model'
+base_dir = './templates/static/image_db'
+feature_dir = './templates/static/feature'
+model_dir = './templates/static/model'
 
 # Read image features
 fe = FeatureExtractor(load_model(model_dir + '/good_model_2.h5', compile=False))
@@ -33,7 +33,7 @@ def index():
         except:
             filename = request.form.get('query_img')
             img = Image.open(filename)
-            uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + filename.split('/')[-1]
+            uploaded_img_path = "templates/static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + filename.split('/')[-1]
 
         # Save query image
         img.save(uploaded_img_path)
